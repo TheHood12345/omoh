@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 
-router.get("/login", async(req,res)=>{
-    const {email, password} = req.query;
+router.post("/login", async(req,res)=>{
+    const {email, password} = req.body;
 
     try{
         const token = jwt.sign({email: email}, process.env.JWT_SECRET_KEY, {expiresIn: "2d"});
